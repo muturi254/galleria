@@ -17,6 +17,6 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    ul(r'', include('galleria.urls'))
+    url(r'', include('galleria.urls')),
     url(r'^admin/', admin.site.urls),
 ]
