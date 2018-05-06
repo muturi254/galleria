@@ -22,7 +22,30 @@ class Image(models.Model):
     image_location = models.ForeignKey(Location, on_delete=models.CASCADE)
     image_category = models.ForeignKey(Category, on_delete=models.CASCADE)
     pub_date = models.DateTimeField('published at', auto_now_add=True)
-    image_url = models.ImageField(upload_to='images/%Y-%m-%d')
+    image_url = models.ImageField(upload_to='images/%Y-%m-%d', null=True)
 
     def __str__(self):
-        return self.image_name
+        return self.image_name 
+
+    # save method
+    def image_save(self):
+        self.save()
+    # delete method
+    def image_delete(self):
+        self.delete()
+
+    @classmethod
+    def get_image_by_Id(cls, image_id):
+      return cls.objects.get(pk=image_id)
+
+    @classmethod
+    def search_category(cls, category_name):
+        return cls.objects.filter(image_category=category_name)
+
+    @classmethod
+    def filter_by_location(cls, location):
+        return cls.objects.filter(image_location=location)
+
+    @classmethod
+    def update_image(cls, id, value):
+        cls.objects.filter(id=id).update(image_url=value)
