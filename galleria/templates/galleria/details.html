@@ -1,0 +1,26 @@
+{% extends './base.html' %}
+{% block content%}
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading text-capitalize lead">{{image.image_name}}</div>
+                    <div class="panel-body">
+                        <h4 style="text-decoration: underline;color: brown">Image Description</h4>
+                        {{ image.image_description }}
+                        <br><br>
+                        <p class="badge">Location: <span class="text-capitalize">{{ image.image_location}}</span></p>
+                        <p class="badge">Category: <span class="text-capitalize text-bold">{{ image.image_category}}</span></p>
+                    </div>
+                    <div class="panel-footer">
+                        <p>&copy; <span class="text-capitalize">{{ image.pub_date}}</span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <img src="{{ image.image_url.url}}" class="img img-responsive img-rounded img-thumbnail">                
+            </div>
+        </div>
+    </div>
+{%endblock%}
