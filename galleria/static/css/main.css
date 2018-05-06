@@ -1,0 +1,7 @@
+.row{
+    margin-bottom: 5vh;
+}
+.col-md-3 img:hover{    
+    opacity: 0.1;
+    cursor: pointer;
+}
