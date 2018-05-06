@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Location, Category, Image
 
 # Create your views here.
@@ -19,3 +19,8 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'galleria/search.html',{"message":message})
+
+
+def details(request, image_id):
+    image = get_object_or_404(Image, pk=image_id)
+    return render(request, 'galleria/details.html', {'image': image})
