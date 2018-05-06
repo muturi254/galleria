@@ -24,3 +24,6 @@ def search_results(request):
 def details(request, image_id):
     image = get_object_or_404(Image, pk=image_id)
     return render(request, 'galleria/details.html', {'image': image})
+
+def about(request):
+    return render(request, 'galleria/about.html', {})
